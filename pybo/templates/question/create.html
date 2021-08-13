@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">Create Question</h5>
+        <form method="post" class="post-form my-3">
+            {{form.csrf_token }}
+            {% for field, errors in form.errors.items() %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>{{form[field].label}} </strong> {{', '.join(errors)}}
+                </div>
+            {% endfor %}
+
+             <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" value="{{form.subject.data or '' }}" >
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea class="form-control" name="content" id="content" rows="5"> {{form.content.data or ''}} </textarea>
+            </div>
+
+        <button class="btn btn-primary" type=""submit>Submit</button>
+    </form>
+</div>
+
+
+{% endblock %}
