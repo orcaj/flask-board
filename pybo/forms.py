@@ -19,3 +19,7 @@ class UserForm(FlaskForm):
 class UserLoginForm(FlaskForm):
     username=StringField('username', validators=[DataRequired('username is required field')])
     password=PasswordField('password', validators=[DataRequired('password is required field')])
+
+class CommentForm(FlaskForm):
+    content = TextAreaField('content', validators=[DataRequired()])
+
